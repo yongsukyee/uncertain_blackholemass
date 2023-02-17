@@ -1,3 +1,9 @@
+# Ignore files specific to repo
+.DS_Store
+TODO.md
+data/
+logs/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
