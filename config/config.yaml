@@ -1,0 +1,23 @@
+hydra:
+  run:
+    dir: ${log_dir}/${now:%Y%m%d}/${now:%H%M%S}_${logmbh_line}
+
+# Directories
+data_dir: '/Users/sukyee/Documents_sukyee/ProjectCode_data/blackholemass_cp_data'
+catalogue_dir: '${data_dir}/catalogue'
+spectra_dir: '${data_dir}/spectra'
+log_dir: '${data_dir}/logs'
+# Catalogue files
+catalogue_file: 'dr16q_prop_Oct23_2022.fits.gz'
+filteredcatalogue_file: 'sdssdr16q_prop.csv'
+
+# Experiment
+seed: 42
+pyenv: mltorch
+logmbh_line: 'LOGMBH_HB' # 'LOGMBH_HB', 'LOGMBH_MGII'
+
+# Train setup
+num_workers: 1
+batch_size: 64
+frac_test_size: 0.3
+max_epochs: 20
