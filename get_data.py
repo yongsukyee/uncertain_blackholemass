@@ -22,6 +22,9 @@ def get_catalogue(catalogue_filepath='catalogue/dr16q_prop_Oct23_2022.fits.gz', 
     Filter objects and save relevant properties to CSV
     Original SDSS DR16 Quasar Properties catalogue: http://quasar.astro.illinois.edu/paper_data/DR16Q/
     Data model: https://github.com/QiaoyaWu/sdss4_dr16q_tutorial
+    columns added:
+        logmbhvir_hbeta: Same as LOGMBH_HB
+        logmbhvir_mgii: Log BH for MgII calibrated using the same coefficient as Hb
     """
     tab = Table(fits.getdata(catalogue_filepath, ext=1))
     
@@ -69,6 +72,16 @@ def get_catalogue(catalogue_filepath='catalogue/dr16q_prop_Oct23_2022.fits.gz', 
         & (df['HBETA_ERR_FWHM'] < 2000) & (df['HBETA_BR_ERR_FWHM'] < 2000)
         & (df['MGII_ERR_FWHM'] < 2000) & (df['MGII_BR_ERR_FWHM'] < 2000)
     ]
+    
+    """
+    # Add new columns on logmbhvir
+    logmbhvir_eq = lambda a, b, c, l, fwhm: a + b*np.log10(fwhm) + c*(l - 44.)
+    # Hb: (a=0.91, b=2., c=0.5) from Vestergaard+Peterson:2006, (a=1.527, b=2., c=0.533) from Bentz+:2013
+    coeff = (0.91, 2., 0.5)
+    df = df.assign(logmbhvir_hbeta=logmbhvir_eq(*coeff, l=df['LOGL5100'], fwhm=df['HBETA_BR_FWHM'])) # Same as LOGMBH_HB
+    df = df.assign(logmbhvir_mgii=logmbhvir_eq(*coeff, l=df['LOGL3000'], fwhm=df['MGII_BR_FWHM']))
+    """
+    
     print(f"Number of samples (before) >> {len(tab)}")
     print(f"Number of samples (after) >> {len(df)}")
     print(f"\tRedshift >> {df['Z_FIT'].min()} -- {df['Z_FIT'].max()}")
@@ -113,17 +126,18 @@ def main(cfg: DictConfig) -> None:
     # Download spectra
     # --------------- #
     if cfg.ddl_spectra:
-        df = pd.read_csv(Path(cfg.catalogue_dir, cfg.filteredcatalogue_file), sep=',', header=0)
-        
+        df_mbh = pd.read_csv(Path(cfg.catalogue_dir, cfg.filteredcatalogue_file), sep=',', header=0)
+        """
+        # For subsample
         bi = 0.2
         # Find combination of cut with sufficient sample
         # import itertools
         # for mbhcut_min, mbhcut_max, bi in itertools.product([7.7,7.8,7.9,8], [8.9,9,9.1,9.2,9.3], [0.1, 0.2]):
         #     cfg.mbhcut_min, cfg.mbhcut_max = mbhcut_min, mbhcut_max
         # Sample evenly from LOGMBH cutoff
-        df_mbh = df[
-            (cfg.mbhcut_min<=df['LOGMBH_HB']) & (df['LOGMBH_HB'] <= cfg.mbhcut_max)
-            & (cfg.mbhcut_min<=df['LOGMBH_MGII']) & (df['LOGMBH_MGII'] <= cfg.mbhcut_max)
+        df_mbh = df_mbh[
+            (cfg.mbhcut_min<=df_mbh['LOGMBH_HB']) & (df_mbh['LOGMBH_HB'] <= cfg.mbhcut_max)
+            & (cfg.mbhcut_min<=df_mbh['LOGMBH_MGII']) & (df_mbh['LOGMBH_MGII'] <= cfg.mbhcut_max)
         ].reset_index(drop=True)
         bins = np.arange(cfg.mbhcut_min, cfg.mbhcut_max+bi, bi)
         bin_labels = [f'{i:.1f}' for i in bins][1:]
@@ -135,7 +149,7 @@ def main(cfg: DictConfig) -> None:
         df_mbh = df_mbh.iloc[sample_idx].reset_index(drop=True)
         print(f"MBH cut for bin size {bi} >> {cfg.mbhcut_min}--{cfg.mbhcut_max}")
         print(f"\tTotal sample >> {len(df_mbh)}")
-        
+        """
         url = 'http://quasar.astro.illinois.edu/paper_data/DR16Q/fits/'
         print("DOWNLOADING DATA ...")
         for i in range(0, len(df_mbh), cfg.nmax_process):
