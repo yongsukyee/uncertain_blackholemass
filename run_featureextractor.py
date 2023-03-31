@@ -68,11 +68,10 @@ def main(cfg: DictConfig) -> None:
     # --------------- #
     # Model
     # --------------- #
-    model_kwargs = {'input_shape': train_dataset[0][0].shape, 'num_labels': 1, 'list_linear': [256, 64, 8]}
+    model_kwargs = {'input_shape': train_dataset[0][0].shape, 'num_labels': 1, 'list_linear': [64, 64, 8], 'dropout': 0.1}
     model = DenseEncoder(**model_kwargs).to(device)
-    # model = ConvEncoder(**model_kwargs).to(device)
     criterion = torch.nn.MSELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=5e-4, weight_decay=1e-6)
     lr_scheduler = torch.optim.lr_scheduler.ConstantLR(optimizer=optimizer, factor=0.5, total_iters=2)
     best_loss = float('inf')
     train_losses, test_losses = [], []
@@ -93,7 +92,7 @@ def main(cfg: DictConfig) -> None:
         train_loss = 0.
         test_loss = 0.
         # For feature extraction
-        extract_layer = model.net[-4]
+        extract_layer = model.net[-5]
         extract_layername = type(extract_layer).__name__ + str(extract_layer.out_features)
         fe_hook = extract_layer.register_forward_hook(get_activation(extract_layername))
         
