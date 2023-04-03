@@ -29,7 +29,7 @@ class SDSSQuasarSpecDataset(Dataset):
         self.listpath_fits = listpath_fits
         self.df_label = df_label
         self.label_key = label_key
-        self.yscaler= yscaler
+        self.yscaler = yscaler
         self.transform = transform
     
     def __len__(self):
@@ -41,17 +41,6 @@ class SDSSQuasarSpecDataset(Dataset):
         
         # Contain: wave_prereduced, flux_prereduced, err_prereduced, wave_conti, flux_conti, err_conti, wave_line, flux_line, err_line
         specdata = fits.getdata(self.listpath_fits[idx], ext=3)
-        """
-        # If using flux_prereduced, need to crop to same size
-        # flux = specdata['flux_prereduced']
-        flux = specdata['flux_prereduced'] - specdata['flux_conti']
-        # Crop to same size
-        npixel = 3000
-        diff_npixel = len(flux) - npixel
-        slice_right = diff_npixel//2
-        slice_left = diff_npixel - slice_right
-        flux = flux[slice_right: -slice_left]
-        """
         flux = specdata['flux_line'][:1000]
         # Scale flux [0, 1]
         scaler = preprocessing.MinMaxScaler()
