@@ -20,4 +20,4 @@ logmbh_line: 'LOGMBH_HB' # 'LOGMBH_HB', 'LOGMBH_MGII'
 num_workers: 1
 batch_size: 64
 frac_test_size: 0.3
-max_epochs: 20
+max_epochs: 100
