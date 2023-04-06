@@ -11,6 +11,7 @@ from torchvision import models
 import torch.nn as n
 
 class DenseEncoder(nn.Module):
+    """Dense encoder for supervised learning"""
     def __init__(self, input_shape, num_labels=1, list_linear=[64, 64], dropout=0.1, **kwargs):
         super(DenseEncoder, self).__init__()
         list_linear = [input_shape[0], *list_linear]
@@ -34,6 +35,7 @@ class DenseEncoder(nn.Module):
 
 
 class Autoencoder(nn.Module):
+    """Autoencoder for unsupervised learning"""
     def __init__(self, input_shape, list_linear=[512, 256], dropout=0.1, **kwargs):
         super(Autoencoder, self).__init__()
         list_linear = [input_shape[0], *list_linear]
