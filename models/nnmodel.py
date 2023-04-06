@@ -3,12 +3,8 @@
 # Author: Suk Yee Yong
 ##################################################
 
-import torch
 import torch.nn as nn
 
-
-from torchvision import models
-import torch.nn as n
 
 class DenseEncoder(nn.Module):
     """Dense encoder for supervised learning"""
