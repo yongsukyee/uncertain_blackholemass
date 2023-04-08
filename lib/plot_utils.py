@@ -26,7 +26,7 @@ def ax_square(ax, identitystd=None, identitystd_shade='gray', plot_identity=True
     # Target within standard deviation
     if isinstance(identitystd, (int, float)):
         identitystd_range = np.linspace(min_lim, max_lim, 10)
-        ax.fill_between(identitystd_range, identitystd_range-identitystd, identitystd_range+identitystd, color=identitystd_shade, edgecolor='none', alpha=0.15, label=rf"$\sigma$={identitystd}")
+        ax.fill_between(identitystd_range, identitystd_range-identitystd, identitystd_range+identitystd, color=identitystd_shade, edgecolor='none', alpha=0.2, label=rf"$\sigma$={identitystd}")
     if plot_identity:
         ax.axline([min_lim, min_lim], slope=1, ls='--', color='gray', alpha=0.6)
     return ax
