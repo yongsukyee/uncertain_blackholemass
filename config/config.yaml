@@ -1,9 +1,10 @@
 hydra:
   run:
-    dir: ${log_dir}/${now:%Y%m%d}/${now:%H%M%S}_${logmbh_line}
+    dir: ${log_dir}/${now:%Y%m%d}/${now:%H%M%S}_${logmbh_line}_${model_name}
 
 # Directories
 data_dir: '/Users/sukyee/Documents_sukyee/ProjectCode_data/blackholemass_cp_data'
+# data_dir: '/Users/sukyee/Documents_sukyee/ProjectCode_data/blackholemass_cp_datasubsample' # Subsample
 catalogue_dir: '${data_dir}/catalogue'
 spectra_dir: '${data_dir}/spectra'
 log_dir: '${data_dir}/logs'
@@ -12,9 +13,9 @@ catalogue_file: 'dr16q_prop_Oct23_2022.fits.gz'
 filteredcatalogue_file: 'sdssdr16q_prop.csv'
 
 # Experiment
-seed: 42
-pyenv: mltorch
+model_name: 'DenseEncoder'
 logmbh_line: 'LOGMBH_HB' # 'LOGMBH_HB', 'LOGMBH_MGII'
+seed: 42
 
 # Train setup
 num_workers: 1
