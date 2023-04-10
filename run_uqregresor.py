@@ -182,12 +182,8 @@ def main():
 if __name__ == '__main__':
     from lib.get_config import get_config
     cfg = get_config('config/config.yaml')
-    logdir_folder = '20230323/000956_LOGMBH_HB'
-    # logdir_folder = '20230323/142847_LOGMBH_MGII'
-    # For subsamples
-    # logdir_folder = '20230309/150244_LOGMBH_HB'
-    # logdir_folder = '20230309/163305_LOGMBH_MGII'
-    
+    logdir_folder = '20230407/001835_LOGMBH_HB_DenseEncoder'
+    # logdir_folder = '20230407/010628_LOGMBH_MGII_DenseEncoder'
     logdir_exp = Path(cfg['data_dir'], 'logs', logdir_folder)
     
     main()
