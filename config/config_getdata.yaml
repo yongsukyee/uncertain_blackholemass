@@ -9,6 +9,4 @@ save_filteredcatalogue: False
 
 # Spectra
 ddl_spectra: True
-mbhcut_min: 8
-mbhcut_max: 9
 nmax_process: 100
