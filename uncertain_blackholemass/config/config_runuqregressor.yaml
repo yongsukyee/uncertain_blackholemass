@@ -1,0 +1,20 @@
+# Defaults
+defaults:
+  - _self_
+  - config
+  - hydra_nolog
+
+# For DenseEncoder
+# logdir_folder: '20230422/002629_LOGMBH_HB_DenseEncoder'
+logdir_folder: '20230422/030635_LOGMBH_MGII_DenseEncoder'
+# For Autoencoder
+# logdir_folder: '20230421/161051_LOGMBH_HB_Autoencoder'
+# logdir_folder: '20230421/202917_LOGMBH_MGII_Autoencoder'
+# Input data: flux_prereduced
+# logdir_folder: '20230409/155413_LOGMBH_HB_Autoencoder'
+# Input data: flux_prereduced-flux_conti
+# logdir_folder: '20230409/201027_LOGMBH_HB_Autoencoder'
+
+# For other test set in subfolder
+logdir_subfolder: 'output_rm'
+feature_testfilename: 'features_rmhomayouni.pkl'
