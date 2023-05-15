@@ -6,8 +6,8 @@ This repository is to accompany the paper Uncertainty Quantification of the Viri
 
 ## Setup and Requirement
 ```
-$ git clone https://github.com/yongsukyee/uncertain_blackholemass.git && cd uncertain_blackholemass
-$ pip install -r requirement.txt
+git clone https://github.com/yongsukyee/uncertain_blackholemass.git && cd uncertain_blackholemass
+pip install -r requirement.txt
 ```
 
 ## Pipeline
