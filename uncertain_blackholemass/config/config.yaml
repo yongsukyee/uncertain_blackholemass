@@ -3,8 +3,7 @@ hydra:
     dir: ${log_dir}/${now:%Y%m%d}/${now:%H%M%S}_${logmbh_line}_${model_name}
 
 # Directories
-data_dir: '/Users/sukyee/Documents_sukyee/ProjectCode_data/blackholemass_cp_data'
-# data_dir: '/Users/sukyee/Documents_sukyee/ProjectCode_data/blackholemass_cp_datasubsample' # Subsample
+data_dir: '../reproducible_output'
 catalogue_dir: '${data_dir}/catalogue'
 spectra_dir: '${data_dir}/spectra'
 log_dir: '${data_dir}/logs'
