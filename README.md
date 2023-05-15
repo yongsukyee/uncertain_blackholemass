@@ -7,12 +7,7 @@ This repository is to accompany the paper Uncertainty Quantification of the Viri
 ## Setup and Requirement
 ```
 $ git clone https://github.com/yongsukyee/uncertain_blackholemass.git && cd uncertain_blackholemass
-
-# Using pip:
 $ pip install -r requirement.txt
-
-# Or using pyproject.toml:
-$ python -m pip install -e .
 ```
 
 ## Pipeline
@@ -77,7 +72,3 @@ TODO: insert citation
 - Taquet, Vianney, V. Blot, Thomas Morzadec, Louis Lacombe and Nicolas J.-B. Brunel. “MAPIE: an open-source library for distribution-free uncertainty quantification.” ArXiv abs/2207.12274 (2022). \[[Paper](https://arxiv.org/abs/2207.12274) | [Code](https://github.com/scikit-learn-contrib/MAPIE)\]
 - Romano, Yaniv, Evan Patterson and Emmanuel J. Candès. “Conformalized Quantile Regression.” Neural Information Processing Systems (2019). \[[Paper](https://arxiv.org/abs/1905.03222) | [Code](https://github.com/yromano/cqr)\]
 - Angelopoulos, Anastasios Nikolas and Stephen Bates. “A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification.” ArXiv abs/2107.07511 (2021). \[[Paper](https://arxiv.org/abs/2107.07511) | [Code](https://github.com/aangelopoulos/conformal-prediction)\]
-
-## TODO
-- [ ] copy logs to reproducible_output
-- [ ] add citations above
