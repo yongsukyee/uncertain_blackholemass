@@ -2,7 +2,7 @@
 .DS_Store
 TODO.md
 data/
-logs/
+# logs/
 *.pdf
 
 # Byte-compiled / optimized / DLL files
