@@ -1,8 +1,8 @@
 # Uncertainty Quantification of the Black Hole Mass Estimation
 
 Predicting virial black hole masses using neural network model and quantifying their uncertainties.
-<!-- TODO: add link to paper -->
-This repository is to accompany the paper Uncertainty Quantification of the Virial Black Hole Mass with Conformal Prediction. 
+
+This repository is to accompany the paper [Uncertainty Quantification of the Virial Black Hole Mass with Conformal Prediction](https://doi.org/10.1093/mnras/stad2080). 
 
 ## Setup and Requirement
 ```
@@ -65,7 +65,20 @@ The `reproducible_output/` directory contains the generated logs and output file
 ## Citation
 If you find this repository useful, please cite the paper:
 ```
-TODO: insert citation
+@article{yong2023uqmbh,
+    author = {Yong, Suk Yee and Ong, Cheng Soon},
+    title = "{Uncertainty quantification of the virial black hole mass with conformal prediction}",
+    journal = {Monthly Notices of the Royal Astronomical Society},
+    volume = {524},
+    number = {2},
+    pages = {3116-3129},
+    year = {2023},
+    month = {07},
+    issn = {0035-8711},
+    doi = {10.1093/mnras/stad2080},
+    url = {https://doi.org/10.1093/mnras/stad2080},
+    eprint = {https://academic.oup.com/mnras/article-pdf/524/2/3116/50937641/stad2080.pdf},
+}
 ```
 
 ## References and Resources
